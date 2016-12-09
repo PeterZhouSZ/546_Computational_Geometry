@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-lg-4">
                     <blockquote class="blockquote-reverse">
-                        <p>Date Submitted: 6 Dec 2016</p>
+                        <p>Date Submitted: 8 Dec 2016</p>
                     </blockquote>
                 </div>
             </div>
@@ -66,12 +66,11 @@
             </div>
             <div class="row">
                 <div class="col-lg-8">
-                    <p>This applet demonstrates the algorithm for "Construct Trapezoidal Map using Sweep Line Algorithm" problem. As its name suggests, this problems deals with. </p>
+                    <p>An applet showing the plane sweep algorithm to construct a trapezoidal map. It shows the sweep line itself, the known events, and the segments that are on the sweep line, and highlights the changes that happen during events. </p>
                 </div>
                 <div class="col-lg-4">
                     <div class="bs-component">
                         <blockquote class="blockquote-reverse">
-                            <p>blablabla....</p>
                             <small>--&nbsp;Courtesy of <cite title='Source Title'>Course Website</cite></small>
                         </blockquote>
                     </div>
@@ -84,34 +83,42 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2 id="algorithm"><span>Algorithm</span></h2>
+
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-11">
                 <div class="bs-component">
+                    <h5>Problem Description</h5>
+                    <p>We will consider a general method of defining a subdivision of the plane into simple region. The method works not only for simple polygons but for much more general inputs as well.</p>
+                    <p>
+					Let S be a set line segments in the plane such that the segments do not intersect one another, except where the endpoint of one segment intersect the endpoint of another segments. And suppose that no two segment endpoints share the same x-coordinate which implies that there are no vertical segments.</p>
+					<p>
+					We will produce a subdivision of space that with respect to these line segments. To do so, we start by enclosing all the segments within a large bounding rectangle. Next, imagine shooting a bullet path vertically upwards and downwards from the endpoints of each segment of S until it first hits another segment of S or the top or bottom of the bounding rectangle. The combination of the original segments and these vertical bullet paths defines a subdivision of the bounding rectangle called the trapezoidal map of S.</p>
                     <h5>Algorithm</h5>
-                    <p>This applet demonstrates the sweep line algorithm for constructing a trapezoidal map.</p> 
+                    <p>We could construct the trapezoidal decomposition using general sweep line algorithm. Imagine a vertical line (the sweep line) passing through each vertex in turn, where the vertices are in increasing x-order. At each vertex i.e. event, one or more trapezia are output. The key point here is how to update the even query in the sweep line algorithm to keep the correct ordering. Suppose endpoint v fall between edges a and b and v is a endpoint of c or shared endpoint by c and d. There are 3 types of event happened at each endpoint in our line set.</p>
+                    <ul>
+                        <li>Line c is to the right of our sweep line or line c is to the right and d is to the left. Then delete d and insert c to the proper place in the queue.
+                        </li>
+                        <li>Line c is to the left of the sweep line or both d and c are to the left of sweep line. Then delete both of them from the queue.</li>
+                        <li>Line c is to the right of the sweep line or both d and c are to the right of the sweep line. Then insert c or c and d to the proper place in L.</li>
+                    </ul> 
                     
                     <h5>Runtime Analysis</h5>
-                    <p>To....</p>
-                    <h5>Proof of Correctness</h5>
-                    <p>To....</p>
+                    <p>Since it is a sweep line algorithm, the total running time is O(n log n).</p>
                 </div>
             </div>
         </div>
-            
-          
-       
-
-    
     
         <div >
             <h2 id="applet1"><span>Applet</span></h2>
+            <h5>Instruction</h5>
+            <p><img src="img/Instruction.png" alt="Instruction" width="1000"></p>
 
             <hr>
-                <applet code = "ArtGalleryApplet" width = "1100" height = "500"> </applet>
+                <applet code = "ArtGalleryApplet" width = "1000" height = "500"> </applet>
             <hr>
 
 
@@ -128,10 +135,10 @@
     
         <div>
             <h2 id="people"><span>Group Members</span></h2>
-            <p>Individual work...</p>
+            <p>Individual work:</p>
             <p>Mengxue Zhang: Java Applet</p>
-            <p>Wenjia Zhang: to be ..</p>
             <p>Ying Wang: Website and Report</p>
+            <p>Wenjia Zhang: Applet and Report</p>
             
         </div>
 
@@ -140,6 +147,9 @@
             <h2 id="reference"><span>Reference</span></h2>
             <ul>
               <li><a href="http://research.engineering.wustl.edu/~pless/506/l14.html">Lecture 14: Trapezoidal Decompositions from Robert Pless</a></li>
+              <li><a href="http://valis.cs.uiuc.edu/~sariel/research/CG/applets/art_gallery/artgal.html">Guarding an Art Gallery Applet By Michael Kleyman</a></li>
+              <li><a href="http://cs.gmu.edu/~jmlien/teaching/cs499-GC/uploads/Main/cs499-lecture03-polypartition.pdf">Polygon Partitioning Lecture</a></li>
+              <li><a href="https://www.cs.umd.edu/~mount/Papers/crc04-intersect.pdf">Geometric Intersection By Dave Mount</a></li>
           </ul>
         </div>
     </div>
